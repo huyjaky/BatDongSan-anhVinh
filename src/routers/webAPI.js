@@ -9,4 +9,4 @@ let initRouter = (app) => {
   return app.use('/', router);
 }
 
-export default initRouter;
+module.exports = initRouter;

@@ -6,6 +6,9 @@
 --index.js
 .env
 
+nodemon:
+"start": "nodemon --inspect src/index.js",
+
 lib:
 "dependencies": {
   "body-parser": "^1.20.2",
