@@ -13,6 +13,7 @@ nodemon:
 lib:
 "dependencies": {
   "body-parser": "^1.20.2",
+  "cors": "^2.8.5",
   "dotenv": "^16.0.3",
   "ejs": "^3.1.9",
   "express": "^4.18.2",
@@ -30,3 +31,5 @@ lib:
 cd src
 
 npx sequelize-cli init
+
+// search docs sequelze at migration sequelize

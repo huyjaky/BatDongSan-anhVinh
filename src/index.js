@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const viewEngine = require('./config/viewEngine');
 const router = require('./routers/webAPI');
+const cors = require('cors');
 require('dotenv').config();
 
 let app = express();
+app.use(cors());
 
 // config app
 
