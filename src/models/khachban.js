@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class khachban extends Model {
     /**
@@ -13,25 +11,24 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  khachban.init({
-    MaKhachBan: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      primaryKey: true
+  khachban.init(
+    {
+      MaKhachBan: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        primaryKey: true,
+      },
+      MaViTri: DataTypes.STRING,
+      TenKhach: DataTypes.STRING,
+      Gia: DataTypes.DOUBLE,
+      Sdt: DataTypes.STRING,
     },
-    MaViTri: DataTypes.STRING,
-    TenKhach: DataTypes.STRING,
-    Gia: DataTypes.DOUBLE,
-    Sdt: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'khachban',
-    timestamps: false,
-    tableName: 'khachban'
-  });
+    {
+      sequelize,
+      modelName: "khachban",
+      timestamps: false,
+      tableName: "khachban",
+    }
+  );
   return khachban;
 };
-
-
-
-

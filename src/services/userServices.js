@@ -1,11 +1,11 @@
 const db = require("../models");
 
 
-let handleUserLogin = (TenNhanVien, MatKhau) => {
+let handleUserLogin = (TaiKhoan, MatKhau) => {
   return new Promise( async (resolve, reject) => {
     try {
       let userData = {};
-      let result = await checkNhanVien(TenNhanVien, MatKhau);
+      let result = await checkNhanVien(TaiKhoan, MatKhau);
       let isExist = result.isExist;
       let user = result.user;
       if (isExist) {
@@ -22,12 +22,12 @@ let handleUserLogin = (TenNhanVien, MatKhau) => {
 }
 
 
-let checkNhanVien = (TenNhanVien, MatKhau) => {
+let checkNhanVien = (TaiKhoan, MatKhau) => {
   return new Promise( async (resolve, reject) => {
     try {
       let user = await db.nhanvien.findOne({
-        where: {TenNhanVien: TenNhanVien, MatKhau: MatKhau},
-        attributes: [ 'MaNhanVien','TenNhanvien']
+        where: {TaiKhoan: TaiKhoan, MatKhau: MatKhau},
+        attributes: [ 'MaNhanVien','TaiKhoan']
       })
       if (user) {
         resolve({isExist: true, user:user});
