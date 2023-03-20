@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     TenKhachThue: DataTypes.STRING,
     TaiChinh: DataTypes.DOUBLE,
     NhuCauChiTiet: DataTypes.STRING,
-    Sdt: DataTypes.STRING
+    Sdt: DataTypes.STRING,
+    NgayDang: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'khachthue',
