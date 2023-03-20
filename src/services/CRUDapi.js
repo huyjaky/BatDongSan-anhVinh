@@ -1,7 +1,6 @@
 const db = require("../models")
 
 
-
 let getNhanvien = () => {
   return new Promise(async (resolve, reject) => {
     try {

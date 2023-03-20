@@ -4,8 +4,12 @@ const controllerAPI = require('../controllers/controllerAPI');
 let router = express.Router();
 
 let initRouter = (app) => {
-  router.get('/', controllerAPI.getHomepage);
+  router.post('/api/login', controllerAPI.handleLogin);
 
+  // check email exist
+  // compare password
+  // return userinfor
+  // access_token: JWT
   return app.use('/', router);
 }
 

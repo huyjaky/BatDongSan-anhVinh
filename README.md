@@ -33,3 +33,5 @@ cd src
 npx sequelize-cli init
 
 // search docs sequelze at migration sequelize
+
+// input type = date, time, month, year, week,.... in html
