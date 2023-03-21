@@ -5,11 +5,9 @@ let router = express.Router();
 
 let initRouter = (app) => {
   router.post('/api/login', controllerAPI.handleLogin);
+  router.post('/api/img', controllerAPI.handleImage);
 
-  // check email exist
-  // compare password
-  // return userinfor
-  // access_token: JWT
+
   return app.use('/', router);
 }
 
