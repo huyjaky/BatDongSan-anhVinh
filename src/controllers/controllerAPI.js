@@ -10,17 +10,14 @@ let handleLogin = async (req, res) => {
       messsage: 'Missing a parameters'
     })
   } else {
-    
+
     let userData = await userServices.handleUserLogin(TaiKhoan, MatKhau);
     return res.json(userData);
   }
 }
 
 let handleImage = async (req, res) => {
-  let codeImg = req.body;
-  let codeImg2 = req.query;
-  console.log(codeImg, 'check1');
-  console.log(codeImg2, 'check2');
+  // console.log(req.file);
 }
 
 module.exports = {
