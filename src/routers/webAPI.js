@@ -7,9 +7,9 @@ const storage = require('../config/DiskMem');
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 20, // giới hạn tải lên là 10MB
-    maxFiles: 20, // giới hạn số lượng file tối đa là 20
-    maxParallelUploads: 10, // tải đồng thời tối đa 10 file
+    fileSize: 1024 * 1024 * 30, // giới hạn tải lên là 10MB
+    maxFiles: 30, // giới hạn số lượng file tối đa là 20
+    maxParallelUploads: 30, // tải đồng thời tối đa 10 file
   }
 });
 
