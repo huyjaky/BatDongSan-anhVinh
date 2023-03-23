@@ -20,7 +20,19 @@ let handleImage = async (req, res) => {
   // console.log(req.file);
 }
 
+let getPhuongQuan = async (req, res) => {
+  let quan = await userServices.getQuan();
+  let phuong = await  userServices.getPhuong();
+  let phuongquan = await userServices.getPhuongQuan();
+  return res.json({
+    quan: quan,
+    phuong: phuong,
+    phuongquan: phuongquan
+  });
+}
+
 module.exports = {
   handleLogin: handleLogin,
-  handleImage: handleImage
+  handleImage: handleImage,
+  getPhuongQuan: getPhuongQuan
 }

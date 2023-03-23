@@ -3,38 +3,31 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class quanhuyen extends Model {
+  class quan extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      quan.hasMany(models.phuongquan, {foreignKey: 'MaQuan'});
     }
   }
-  quanhuyen.init({
-    MaViTri: {
+  quan.init({
+    MaQuan: {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true
     },
-    MaQuan: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    TenViTri: DataTypes.STRING,
-    TenPhuong: DataTypes.STRING
+    TenQuan: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'quanhuyen',
+    modelName: 'quan',
     timestamps: false,
-    tableName: 'quanhuyen'
+    tableName: 'quan'
   });
-  return quanhuyen;
+  return quan;
 };
-
-
 
 
 

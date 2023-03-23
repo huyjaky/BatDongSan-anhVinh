@@ -18,7 +18,8 @@ let router = express.Router();
 let initRouter = (app) => {
   router.post('/api/login', controllerAPI.handleLogin);
   router.post('/api/img', upload.array('files'), controllerAPI.handleImage);
-
+  router.get('/api/phuongquan', controllerAPI.getPhuongQuan);
+  
 
   return app.use('/', router);
 }

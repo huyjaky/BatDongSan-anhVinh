@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true
     },
-    MaViTri: DataTypes.STRING,
     TaiChinh: DataTypes.DOUBLE,
     TenKhach: DataTypes.STRING,
     NhuCauChiTiet: DataTypes.STRING,
