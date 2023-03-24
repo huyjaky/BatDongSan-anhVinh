@@ -1,36 +1,65 @@
 const e = require("cors");
-const phuong_quan = require('../services/phuong_quan');
 const { v4: uuidv4 } = require('uuid');
 const post_khach = require("../services/post_khach");
 
-let postKhachThue_KhachMua = async (req, res) => {
+let postKhach = async (req, res) => {
   try {
-    // up anh len database
-    const fileNames = req.files.map(async (item) => {
-      return await post_khach.postImage(item);
-    });
+
+    // MaKhachBan x
+    // MaViTri x
+    // TenKhach x
+    // Gia/TaiChinh x
+    // ThongTinChiTiet/NhuCauChiTiet x
+    // Sdt x
+    // NgayDang x
+    // Linkface x
+
+    //MaAnh x
+    //Hinh x
+
+    // MaViTri x
+    // MaPhuong x
+    // MaQuan x
+
+    const loaikhach = req.body.khach;
+    const MaViTri = createUUID();
+    const MaKhach = createUUID();
+
+    const MaPhuong = req.body.MaPhuong;
+    const MaQuan = req.body.MaQuan;
+    const fileNames = req.files;
 
     // up thong tin khach len database
-    const MaKhach = createUUID();
-    const TaiChinh = req.body.TaiChinh;
     const TenKhach = req.body.TenKhach;
+    const TaiChinh = req.body.TaiChinh;
     const NhuCauChiTiet = req.body.NhuCauChiTiet;
 
     const regex = /^.*[e-].*$/;
     const Sdt = req.body.Sdt;
     if (regex.test(req.body.Sdt)) {
-      Sdt.replace(/[e-]/g, '');
+      Sdt = Sdt.replace(/[e-]/g, '');
     }
-
     const NgayDang = Date.now();
     const Linkface = req.body.Linkface;
 
+    const postKhach = await post_khach.postKhach(
+      MaKhach,
+      MaViTri,
+      TenKhach,
+      TaiChinh,
+      NhuCauChiTiet,
+      Sdt,
+      NgayDang,
+      Linkface,
+      fileNames,
+      MaPhuong,
+      MaQuan,
+      loaikhach
+    );
 
-    
-    const MaViTri = createUUID();
-    return res.json('Finish up anh');
+    return res.json('Finish');
   } catch (error) {
-    return res.json('err!', err)
+    return res.json(error);
   }
 }
 
@@ -40,5 +69,5 @@ let createUUID = () => {
 }
 
 module.exports = {
-  postKhachThue_KhachMua: postKhachThue_KhachMua
+  postKhach: postKhach,
 }
