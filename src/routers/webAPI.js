@@ -21,8 +21,8 @@ let initRouter = (app) => {
   router.post('/api/login', handleLogin.handleLogin);
   // router.post('/api/img', upload.array('files'), controllerAPI.handleImage);
   router.get('/api/phuongquan', controllerAPI.getPhuongQuan);
-  router.post('/api/khachthue_khachmua', upload.array('files'), handlePostKhach.postKhachThue_KhachMua);
-  
+  router.post('/api/khach', upload.array('files'), handlePostKhach.postKhach);
+
 
   return app.use('/', router);
 }
