@@ -39,7 +39,6 @@ let postKhach = async (req, res) => {
     if (regex.test(req.body.Sdt)) {
       Sdt = Sdt.replace(/[e-]/g, '');
     }
-    const NgayDang = Date.now();
     const Linkface = req.body.Linkface;
 
     const postKhach = await post_khach.postKhach(
@@ -49,7 +48,6 @@ let postKhach = async (req, res) => {
       TaiChinh,
       NhuCauChiTiet,
       Sdt,
-      NgayDang,
       Linkface,
       fileNames,
       MaPhuong,

@@ -1,25 +1,9 @@
 const { Sequelize, sequelize } = require('../models');
 const db = require("../models");
 
-
-// MaViTri x
-// TenKhach x
-// Gia/TaiChinh x
-// ThongTinChiTiet/NhuCauChiTiet x
-// Sdt x
-// NgayDang x
-// Linkface x
-
-//MaAnh x
-//Hinh x
-
-// MaViTri x
-// MaPhuong x
-// MaQuan x
-
-const postKhach = async (MaKhach, MaViTri, TenKhach, TaiChinh, NhuCauChiTiet, Sdt, NgayDang, Linkface, DanhSachHinh, MaPhuong, MaQuan, loaikhach) => {
+const postKhach = async (MaKhach, MaViTri, TenKhach, TaiChinh, NhuCauChiTiet, Sdt, Linkface, DanhSachHinh, MaPhuong, MaQuan, loaikhach) => {
   try {
-
+    await postDiaChi(MaViTri, MaPhuong, MaQuan);
     // them loai khach
     if (loaikhach === 'khachban') {
       const postKhachBan = await db.khachban.create({
@@ -28,8 +12,8 @@ const postKhach = async (MaKhach, MaViTri, TenKhach, TaiChinh, NhuCauChiTiet, Sd
         TenKhach: TenKhach,
         Gia: TaiChinh,
         Sdt: Sdt,
-        NgayDang: NgayDang,
         Linkface: Linkface,
+        NgayDang: new Date(),
         NhuCauChiTiet: NhuCauChiTiet
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
@@ -42,7 +26,7 @@ const postKhach = async (MaKhach, MaViTri, TenKhach, TaiChinh, NhuCauChiTiet, Sd
         Gia: TaiChinh,
         ThongTinChiTiet: NhuCauChiTiet,
         Sdt: Sdt,
-        NgayDang: NgayDang,
+        NgayDang: new Date(),
         Linkface: Linkface
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
@@ -54,8 +38,8 @@ const postKhach = async (MaKhach, MaViTri, TenKhach, TaiChinh, NhuCauChiTiet, Sd
         TenKhachThue: TenKhach,
         TaiChinh: TaiChinh,
         NhuCauChiTiet: NhuCauChiTiet,
+        NgayDang: new Date(),
         Sdt: Sdt,
-        NgayDang: NgayDang,
         Linkface: Linkface
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
@@ -68,14 +52,13 @@ const postKhach = async (MaKhach, MaViTri, TenKhach, TaiChinh, NhuCauChiTiet, Sd
         TaiChinh: TaiChinh,
         NhuCauChiTiet: NhuCauChiTiet,
         Sdt: Sdt,
-        NgayDang: NgayDang,
+        NgayDang: new Date(),
         Linkface: Linkface
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
     }
 
-    
-    await postDiaChi(MaViTri, MaPhuong, MaQuan);
+
 
 
     return;

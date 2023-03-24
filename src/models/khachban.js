@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const { Sequelize } = require(".");
 module.exports = (sequelize, DataTypes) => {
   class khachban extends Model {
     /**
@@ -23,7 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       TenKhach: DataTypes.STRING,
       Gia: DataTypes.DOUBLE,
       Sdt: DataTypes.STRING,
-      NgayDang: DataTypes.DATE,
+    NgayDang: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.NOW
+    },
       Linkface: DataTypes.STRING
     },
     {

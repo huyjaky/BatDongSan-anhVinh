@@ -25,7 +25,10 @@ module.exports = (sequelize, DataTypes) => {
     TaiChinh: DataTypes.DOUBLE,
     NhuCauChiTiet: DataTypes.STRING,
     Sdt: DataTypes.STRING,
-    NgayDang: DataTypes.DATE,
+    NgayDang: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.NOW
+    },
     Linkface: DataTypes.STRING
   }, {
     sequelize,
