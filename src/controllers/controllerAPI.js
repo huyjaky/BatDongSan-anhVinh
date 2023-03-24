@@ -1,5 +1,7 @@
 const e = require("cors");
 const userServices = require("../services/userServices");
+const phuong_quan = require('../services/phuong_quan');
+const post_khach = require("../services/post_khach");
 
 let handleLogin = async (req, res) => {
   let TaiKhoan = req.body.TaiKhoan;
@@ -21,9 +23,9 @@ let handleImage = async (req, res) => {
 }
 
 let getPhuongQuan = async (req, res) => {
-  let quan = await userServices.getQuan();
-  let phuong = await  userServices.getPhuong();
-  let phuongquan = await userServices.getPhuongQuan();
+  let quan = await phuong_quan.getQuan();
+  let phuong = await  phuong_quan.getPhuong();
+  let phuongquan = await phuong_quan.getPhuongQuan();
   return res.json({
     quan: quan,
     phuong: phuong,
@@ -31,8 +33,14 @@ let getPhuongQuan = async (req, res) => {
   });
 }
 
+let postKhachThue = async (req, res) => {
+  let khachthue = await post_khach.postKhachThue();
+  return res.json(khachthue);
+}
+
 module.exports = {
   handleLogin: handleLogin,
   handleImage: handleImage,
-  getPhuongQuan: getPhuongQuan
+  getPhuongQuan: getPhuongQuan,
+  postKhachThue: postKhachThue
 }

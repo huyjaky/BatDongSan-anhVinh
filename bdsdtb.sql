@@ -28,14 +28,12 @@ CREATE TABLE IF NOT EXISTS `diachi` (
   KEY `MaQuan` (`MaQuan`),
   KEY `MaPhuong` (`MaPhuong`),
   CONSTRAINT `diachi_ibfk_1` FOREIGN KEY (`MaQuan`) REFERENCES `quan` (`MaQuan`),
-  CONSTRAINT `diachi_ibfk_2` FOREIGN KEY (`MaPhuong`) REFERENCES `phuong` (`MaPhuong`),
-  CONSTRAINT `khachban` FOREIGN KEY (`MaViTri`) REFERENCES `khachban` (`MaViTri`),
-  CONSTRAINT `khachchothue` FOREIGN KEY (`MaViTri`) REFERENCES `khachchothue` (`MaViTri`),
-  CONSTRAINT `khachmua` FOREIGN KEY (`MaViTri`) REFERENCES `khachmua` (`MaViTri`),
-  CONSTRAINT `khachthue` FOREIGN KEY (`MaViTri`) REFERENCES `khachthue` (`MaViTri`)
+  CONSTRAINT `diachi_ibfk_2` FOREIGN KEY (`MaPhuong`) REFERENCES `phuong` (`MaPhuong`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table bdsdatabase.diachi: ~0 rows (approximately)
+-- Dumping data for table bdsdatabase.diachi: ~1 rows (approximately)
+INSERT INTO `diachi` (`MaViTri`, `MaQuan`, `MaPhuong`) VALUES
+	('1', 'Q5', 'P1');
 
 -- Dumping structure for table bdsdatabase.hinhanh
 CREATE TABLE IF NOT EXISTS `hinhanh` (
@@ -54,11 +52,10 @@ CREATE TABLE IF NOT EXISTS `khachban` (
   `Gia` varchar(50) DEFAULT NULL,
   `Sdt` varchar(50) DEFAULT NULL,
   `NgayDang` datetime DEFAULT NULL,
-  `MaAnh` varchar(50) DEFAULT NULL,
+  `Linkface` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`MaKhachBan`),
   KEY `FK1KhachBan.MaViTri` (`MaViTri`),
-  KEY `FK2KhachBan.MaAnh` (`MaAnh`),
-  CONSTRAINT `FK1KhachBan.MaViTri` FOREIGN KEY (`MaViTri`) REFERENCES `vitri` (`MaViTri`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_khachban_diachi` FOREIGN KEY (`MaViTri`) REFERENCES `diachi` (`MaViTri`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table bdsdatabase.khachban: ~0 rows (approximately)
@@ -72,11 +69,10 @@ CREATE TABLE IF NOT EXISTS `khachchothue` (
   `ThongTinChiTiet` varchar(50) DEFAULT NULL,
   `Sdt` varchar(50) DEFAULT NULL,
   `NgayDang` datetime DEFAULT NULL,
-  `MaAnh` varchar(50) DEFAULT NULL,
+  `Linkface` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`MaKhachChoThue`),
   KEY `FK1KhachChoThue.MaViTri` (`MaViTri`),
-  KEY `FK2KhachChoThue.MaAnh` (`MaAnh`),
-  CONSTRAINT `FK1KhachChoThue.MaViTri` FOREIGN KEY (`MaViTri`) REFERENCES `vitri` (`MaViTri`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_khachchothue_diachi` FOREIGN KEY (`MaViTri`) REFERENCES `diachi` (`MaViTri`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table bdsdatabase.khachchothue: ~0 rows (approximately)
@@ -90,11 +86,10 @@ CREATE TABLE IF NOT EXISTS `khachmua` (
   `NhuCauChiTiet` varchar(50) DEFAULT NULL,
   `Sdt` varchar(50) DEFAULT NULL,
   `NgayDang` datetime DEFAULT NULL,
-  `MaAnh` varchar(50) DEFAULT NULL,
+  `Linkface` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`MaKhachMua`),
   KEY `FK1KhachMua.MaViTri` (`MaViTri`),
-  KEY `FK2KhachMua.MaAnh` (`MaAnh`),
-  CONSTRAINT `FK1KhachMua.MaViTri` FOREIGN KEY (`MaViTri`) REFERENCES `vitri` (`MaViTri`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_khachmua_diachi` FOREIGN KEY (`MaViTri`) REFERENCES `diachi` (`MaViTri`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table bdsdatabase.khachmua: ~0 rows (approximately)
@@ -108,14 +103,15 @@ CREATE TABLE IF NOT EXISTS `khachthue` (
   `NhuCauChiTiet` varchar(50) DEFAULT NULL,
   `Sdt` varchar(50) DEFAULT NULL,
   `NgayDang` datetime DEFAULT NULL,
-  `MaAnh` varchar(50) DEFAULT NULL,
+  `Linkface` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`MaKhachThue`),
   KEY `FK1KhachThue.MaViTri` (`MaViTri`),
-  KEY `FK2KhachThue.MaAnh` (`MaAnh`),
-  CONSTRAINT `FK1KhachThue.MaViTri` FOREIGN KEY (`MaViTri`) REFERENCES `vitri` (`MaViTri`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_khachthue_diachi` FOREIGN KEY (`MaViTri`) REFERENCES `diachi` (`MaViTri`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table bdsdatabase.khachthue: ~0 rows (approximately)
+-- Dumping data for table bdsdatabase.khachthue: ~1 rows (approximately)
+INSERT INTO `khachthue` (`MaKhachThue`, `MaViTri`, `TenKhachThue`, `TaiChinh`, `NhuCauChiTiet`, `Sdt`, `NgayDang`, `Linkface`) VALUES
+	('1', '1', 'huy', '12', 'huy can mua nha', '12345676889', '2023-03-23 20:44:49', 'face123123');
 
 -- Dumping structure for table bdsdatabase.nhanvien
 CREATE TABLE IF NOT EXISTS `nhanvien` (
@@ -129,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `nhanvien` (
   CONSTRAINT `FK1NhanVien.MaPQ` FOREIGN KEY (`MaPQ`) REFERENCES `phanquyen` (`MaPQ`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table bdsdatabase.nhanvien: ~0 rows (approximately)
+-- Dumping data for table bdsdatabase.nhanvien: ~1 rows (approximately)
 INSERT INTO `nhanvien` (`MaNhanVien`, `TenNhanVien`, `TaiKhoan`, `MatKhau`, `MaPQ`) VALUES
 	('1', 'Huy', 'huy', '123', NULL);
 
@@ -149,7 +145,23 @@ CREATE TABLE IF NOT EXISTS `phuong` (
   PRIMARY KEY (`MaPhuong`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table bdsdatabase.phuong: ~0 rows (approximately)
+-- Dumping data for table bdsdatabase.phuong: ~15 rows (approximately)
+INSERT INTO `phuong` (`MaPhuong`, `TenPhuong`) VALUES
+	('P1', 'An Hải Bắc'),
+	('P10', 'Hòa Thọ Tây'),
+	('P11', 'Hòa Xuân'),
+	('P12', 'Hòa Minh'),
+	('P13', 'Khuê Trung'),
+	('P14', 'Hòa Quý'),
+	('P15', 'Khuê Mỹ'),
+	('P2', 'An Hải Đông'),
+	('P3', 'An Hải Tây'),
+	('P4', 'Mân Thái'),
+	('P5', 'Nam Dương'),
+	('P6', 'Phước Ninh'),
+	('P7', 'Hòa An'),
+	('P8', 'Hòa Phát'),
+	('P9', 'Hòa Thọ Đông');
 
 -- Dumping structure for table bdsdatabase.phuongquan
 CREATE TABLE IF NOT EXISTS `phuongquan` (
@@ -161,7 +173,23 @@ CREATE TABLE IF NOT EXISTS `phuongquan` (
   CONSTRAINT `phuongquan_ibfk_2` FOREIGN KEY (`MaQuan`) REFERENCES `quan` (`MaQuan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table bdsdatabase.phuongquan: ~0 rows (approximately)
+-- Dumping data for table bdsdatabase.phuongquan: ~15 rows (approximately)
+INSERT INTO `phuongquan` (`MaPhuong`, `MaQuan`) VALUES
+	('P1', 'Q1'),
+	('P2', 'Q1'),
+	('P3', 'Q1'),
+	('P4', 'Q2'),
+	('P5', 'Q2'),
+	('P6', 'Q3'),
+	('P7', 'Q3'),
+	('P8', 'Q4'),
+	('P9', 'Q4'),
+	('P10', 'Q4'),
+	('P11', 'Q5'),
+	('P12', 'Q5'),
+	('P13', 'Q6'),
+	('P14', 'Q6'),
+	('P15', 'Q7');
 
 -- Dumping structure for table bdsdatabase.quan
 CREATE TABLE IF NOT EXISTS `quan` (
@@ -170,7 +198,15 @@ CREATE TABLE IF NOT EXISTS `quan` (
   PRIMARY KEY (`MaQuan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table bdsdatabase.quan: ~0 rows (approximately)
+-- Dumping data for table bdsdatabase.quan: ~7 rows (approximately)
+INSERT INTO `quan` (`MaQuan`, `TenQuan`) VALUES
+	('Q1', 'Cẩm Lệ'),
+	('Q2', 'Hải Châu'),
+	('Q3', 'Liên Chiểu'),
+	('Q4', 'Ngũ Hành Sơn'),
+	('Q5', 'Sơn Trà'),
+	('Q6', 'Thanh Khê'),
+	('Q7', 'Quận Hòa Vang');
 
 -- Dumping structure for table bdsdatabase.quanlyanh
 CREATE TABLE IF NOT EXISTS `quanlyanh` (

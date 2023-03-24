@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       quan.hasMany(models.phuongquan, {foreignKey: 'MaQuan'});
+      quan.hasMany(models.diachi, {foreignKey: 'MaQuan'});
     }
   }
   quan.init({

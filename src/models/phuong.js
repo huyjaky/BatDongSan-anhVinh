@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       phuong.hasMany(models.phuongquan , {foreignKey: 'MaQuan'});
+      phuong.hasMany(models.diachi, {foreignKey: 'MaPhuong'});
     }
   }
   phuong.init({
