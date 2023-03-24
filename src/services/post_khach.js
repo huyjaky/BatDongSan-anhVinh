@@ -23,9 +23,24 @@ const postKhachThue = async () => {
   } catch (error) {
     console.log(error);
   }
+}
 
+const postImage = async (img) => {
+  try {
+    let postImg = db.hinhanh.create({
+      MaAnh: img.filename,
+      Hinh: img.path
+    }).then(newAnh => {
+      console.log("finish upload anh!: ", newAnh);
+    }).catch (err => {
+      console.log(err);
+    })
+  } catch (err) {
+    return err;
+  }
 }
 
 module.exports = {
-  postKhachThue: postKhachThue
+  postKhachThue: postKhachThue,
+  postImage: postImage
 }

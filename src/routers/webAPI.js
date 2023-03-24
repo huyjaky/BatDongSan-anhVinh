@@ -2,6 +2,8 @@ const express = require('express');
 const controllerAPI = require('../controllers/controllerAPI');
 const multer = require('multer');
 const storage = require('../config/DiskMem');
+const handleLogin = require('../controllers/handleLogin');
+const handlePostKhach = require('../controllers/handlePostKhach');
 
 
 const upload = multer({
@@ -16,10 +18,11 @@ const upload = multer({
 let router = express.Router();
 
 let initRouter = (app) => {
-  router.post('/api/login', controllerAPI.handleLogin);
-  router.post('/api/img', upload.array('files'), controllerAPI.handleImage);
+  router.post('/api/login', handleLogin.handleLogin);
+  // router.post('/api/img', upload.array('files'), controllerAPI.handleImage);
   router.get('/api/phuongquan', controllerAPI.getPhuongQuan);
-  router.post('/api/khachthue', controllerAPI.postKhachThue);
+  router.post('/api/khachthue_khachmua', upload.array('files'), handlePostKhach.postKhachThue_KhachMua);
+  
 
   return app.use('/', router);
 }
