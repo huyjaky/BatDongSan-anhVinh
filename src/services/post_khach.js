@@ -1,4 +1,3 @@
-const { Sequelize, sequelize } = require('../models');
 const db = require("../models");
 
 const postKhach = async (MaKhach, MaViTri, MaAnhKhach, TenDuong, TenKhach, TaiChinh, NhuCauChiTiet, Sdt, Linkface, DanhSachHinh, MaPhuong, MaQuan, loaikhach) => {
@@ -68,7 +67,6 @@ const postKhach = async (MaKhach, MaViTri, MaAnhKhach, TenDuong, TenKhach, TaiCh
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
     }
-
     return;
   } catch (error) {
     console.log(error);

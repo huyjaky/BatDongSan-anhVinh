@@ -1,5 +1,3 @@
-const { on } = require('nodemon');
-const { Sequelize, sequelize } = require('../models');
 const db = require("../models");
 
 const getQuan = async () => {

@@ -4,6 +4,8 @@ const multer = require('multer');
 const storage = require('../config/DiskMem');
 const handleLogin = require('../controllers/handleLogin');
 const handlePostKhach = require('../controllers/handlePostKhach');
+const handleGetKhach = require('../controllers/handleGetKhach');
+const getImg = require('../controllers/getImg');
 
 
 const upload = multer({
@@ -23,7 +25,8 @@ let initRouter = (app) => {
   router.get('/api/phuongquan', controllerAPI.getPhuongQuan);
   router.post('/api/khach', upload.array('files'), handlePostKhach.postKhach);
   router.post('/api/img', upload.array('files'), handlePostKhach.upImg);
-
+  router.get('/api/getallkhach', handleGetKhach.getAllKhach);
+  router.get('/api/img/path/*', getImg.getImage);
 
   return app.use('/', router);
 }

@@ -76,9 +76,9 @@ let postKhach = async (req, res) => {
       loaikhach
     );
 
-    return res.json('Finish');
+    return res.json('finish');
   } catch (error) {
-    return res.json(error);
+    return res.json('error');
   }
 }
 
