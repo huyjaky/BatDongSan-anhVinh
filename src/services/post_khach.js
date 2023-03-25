@@ -67,6 +67,7 @@ const postKhach = async (MaKhach, MaViTri, MaAnhKhach, TenDuong, TenKhach, TaiCh
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
     }
+    
     return;
   } catch (error) {
     console.log(error);

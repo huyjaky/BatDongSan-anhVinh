@@ -18,18 +18,34 @@ let getKhach = async () => {
     return await getImgKhachMua(item.MaAnhKhach);
   }));
 
+  // lay anh tu khach cho thue
+  const imgKhachChoThue = await Promise.all(khachchothue.map(async (item) => {
+    return await getImgKhachChoThue(item.MaAnhKhach);
+  }));
+
+  // lay anh tu khach ban
+  const imgKhachBan = await Promise.all(khachban.map(async (item) => {
+    return await getImgKhachBan(item.MaAnhKhach);
+  }));
+  console.log(imgKhachBan);
 
   const AllKhach = {
     khachthue: {
       khachthue,
       imgKhachThue
     },
-    khachban: khachban,
+    khachban: {
+      khachban,
+      imgKhachBan
+    },
     khachmua: {
       khachmua,
       imgKhachMua
     },
-    khachchothue: khachchothue
+    khachchothue: {
+      khachchothue,
+      imgKhachChoThue
+    }
   }
   return AllKhach;
 }
@@ -80,7 +96,7 @@ let getKhachThue = async () => {
 
 let getImgKhachMua = async (MaAnhKhach) => {
   try {
-    const imgKhachThue = await db.hinhanh.findAll({
+    const imgKhachMua = await db.hinhanh.findAll({
       attributes: ['Hinh'],
       include: [{
         model: db.folderanh,
@@ -99,7 +115,7 @@ let getImgKhachMua = async (MaAnhKhach) => {
       }],
       raw: true
     })
-    return imgKhachThue;
+    return imgKhachMua;
   } catch (error) {
     console.log(error);
     return;
@@ -117,7 +133,37 @@ let getKhachMua = async () => {
 }
 
 // ----------------------------------------------------------------------------------------------
+
+let getImgKhachChoThue = async (MaAnhKhach) => {
+  try {
+    const imgKhachChoThue = await db.hinhanh.findAll({
+      attributes: ['Hinh'],
+      include: [{
+        model: db.folderanh,
+        attributes: [],
+        required: true,
+        include: [{
+          model: db.quanlyanh,
+          attributes: [],
+          required: true,
+          include: [{
+            model: db.khachchothue,
+            where: { MaAnhKhach: MaAnhKhach },
+            attributes: []
+          }]
+        }]
+      }],
+      raw: true
+    })
+    return imgKhachChoThue;
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+}
+
 let getKhachChoThue = async () => {
+
   try {
     const khachchothue = await db.khachchothue.findAll();
     return khachchothue;
@@ -128,6 +174,34 @@ let getKhachChoThue = async () => {
 }
 
 // ----------------------------------------------------------------------------------------------
+let getImgKhachBan = async (MaAnhKhach) => {
+  try {
+    const imgKhachBan = await db.hinhanh.findAll({
+      attributes: ['Hinh'],
+      include: [{
+        model: db.folderanh,
+        attributes: [],
+        required: true,
+        include: [{
+          model: db.quanlyanh,
+          attributes: [],
+          required: true,
+          include: [{
+            model: db.khachban,
+            where: { MaAnhKhach: MaAnhKhach },
+            attributes: []
+          }]
+        }]
+      }],
+      raw: true
+    })
+    return imgKhachBan;
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+}
+
 let getKhachBan = async () => {
   try {
     const khachban = await db.khachban.findAll();

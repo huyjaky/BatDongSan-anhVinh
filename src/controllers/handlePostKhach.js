@@ -46,7 +46,9 @@ let postKhach = async (req, res) => {
     const MaPhuong = req.body.MaPhuong;
     const MaQuan = req.body.MaQuan;
     const TenDuong = req.body.TenDuong;
-    const fileNames = arrImg;
+    const fileNames = await arrImg;
+    const empty = [];
+    arrImg = empty;
 
     // up thong tin khach len database
     const TenKhach = req.body.TenKhach;
@@ -75,7 +77,6 @@ let postKhach = async (req, res) => {
       MaQuan,
       loaikhach
     );
-
     return res.json('finish');
   } catch (error) {
     return res.json('error');
