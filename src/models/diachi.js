@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       model: 'quan',
       references: 'MaQuan'
     },
+    TenDuong: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'diachi',

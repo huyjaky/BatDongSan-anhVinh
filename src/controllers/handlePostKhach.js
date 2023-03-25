@@ -1,10 +1,26 @@
 const e = require("cors");
 const { v4: uuidv4 } = require('uuid');
+const { postImage } = require("../services/post_khach");
 const post_khach = require("../services/post_khach");
+
+var arrImg = [];
+
+let upImg = async (req, res) => {
+  try {
+    const files = await req.files;
+    files.map(async item => {
+      await postImage(item);
+      arrImg.push(item);
+    });
+    return res.json('Finish UpImg');
+  } catch (error) {
+    return res.json(error);
+  }
+}
+
 
 let postKhach = async (req, res) => {
   try {
-
     // MaKhachBan x
     // MaViTri x
     // TenKhach x
@@ -24,10 +40,13 @@ let postKhach = async (req, res) => {
     const loaikhach = req.body.khach;
     const MaViTri = createUUID();
     const MaKhach = createUUID();
+    const MaAnhKhach = createUUID();
+
 
     const MaPhuong = req.body.MaPhuong;
     const MaQuan = req.body.MaQuan;
-    const fileNames = req.files;
+    const TenDuong = req.body.TenDuong;
+    const fileNames = arrImg;
 
     // up thong tin khach len database
     const TenKhach = req.body.TenKhach;
@@ -44,6 +63,8 @@ let postKhach = async (req, res) => {
     const postKhach = await post_khach.postKhach(
       MaKhach,
       MaViTri,
+      MaAnhKhach,
+      TenDuong,
       TenKhach,
       TaiChinh,
       NhuCauChiTiet,
@@ -66,6 +87,9 @@ let createUUID = () => {
   return uuid;
 }
 
+
+
 module.exports = {
   postKhach: postKhach,
+  upImg: upImg
 }

@@ -1,11 +1,18 @@
 const { Sequelize, sequelize } = require('../models');
 const db = require("../models");
 
-const postKhach = async (MaKhach, MaViTri, TenKhach, TaiChinh, NhuCauChiTiet, Sdt, Linkface, DanhSachHinh, MaPhuong, MaQuan, loaikhach) => {
+const postKhach = async (MaKhach, MaViTri, MaAnhKhach, TenDuong, TenKhach, TaiChinh, NhuCauChiTiet, Sdt, Linkface, DanhSachHinh, MaPhuong, MaQuan, loaikhach) => {
   try {
-    await postDiaChi(MaViTri, MaPhuong, MaQuan);
+    await postDiaChi(MaViTri, MaPhuong, MaQuan, TenDuong);
+    await postQuanLyAnh(MaAnhKhach);
+
+    await DanhSachHinh.map(async (item) => {
+      await postFolderAnh(item, MaAnhKhach)
+      return;
+    })
+
     // them loai khach
-    if (loaikhach === 'khachban') {
+    if (loaikhach === 'Khach Ban') {
       const postKhachBan = await db.khachban.create({
         MaKhachBan: MaKhach,
         MaViTri: MaViTri,
@@ -14,11 +21,12 @@ const postKhach = async (MaKhach, MaViTri, TenKhach, TaiChinh, NhuCauChiTiet, Sd
         Sdt: Sdt,
         Linkface: Linkface,
         NgayDang: new Date(),
+        MaAnhKhach: MaAnhKhach,
         NhuCauChiTiet: NhuCauChiTiet
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
 
-    } else if (loaikhach === 'khachchothue') {
+    } else if (loaikhach === 'Khach Cho Thue') {
       const postKhachChoThue = await db.khachchothue.create({
         MaKhachChoThue: MaKhach,
         MaViTri: MaViTri,
@@ -27,11 +35,12 @@ const postKhach = async (MaKhach, MaViTri, TenKhach, TaiChinh, NhuCauChiTiet, Sd
         ThongTinChiTiet: NhuCauChiTiet,
         Sdt: Sdt,
         NgayDang: new Date(),
+        MaAnhKhach: MaAnhKhach,
         Linkface: Linkface
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
 
-    } else if (loaikhach === 'khachthue') {
+    } else if (loaikhach === 'Khach Thue') {
       const postKhachThue = await db.khachthue.create({
         MaKhachThue: MaKhach,
         MaViTri: MaViTri,
@@ -40,30 +49,55 @@ const postKhach = async (MaKhach, MaViTri, TenKhach, TaiChinh, NhuCauChiTiet, Sd
         NhuCauChiTiet: NhuCauChiTiet,
         NgayDang: new Date(),
         Sdt: Sdt,
+        MaAnhKhach: MaAnhKhach,
         Linkface: Linkface
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
 
-    } else if (loaikhach === 'khachmua') {
+    } else if (loaikhach === 'Khach Mua') {
       const postKhachMua = await db.khachmua.create({
         MaKhachMua: MaKhach,
         MaViTri: MaViTri,
-        TenKhachThue: TenKhach,
+        TenKhach: TenKhach,
         TaiChinh: TaiChinh,
         NhuCauChiTiet: NhuCauChiTiet,
         Sdt: Sdt,
         NgayDang: new Date(),
+        MaAnhKhach: MaAnhKhach,
         Linkface: Linkface
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
     }
 
-
-
-
     return;
   } catch (error) {
     console.log(error);
+  }
+}
+
+const postQuanLyAnh = async (MaAnhKhach) => {
+  try {
+    const quanlyanh = await db.quanlyanh.create({
+      MaAnhKhach: MaAnhKhach,
+    }).then(finish => console.log(finish))
+      .catch(err => console.log(err));
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+}
+
+const postFolderAnh = async (Img, MaAnhKhach) => {
+  try {
+    const folderanh = await db.folderanh.create({
+      MaAnh: Img.filename,
+      MaAnhKhach: MaAnhKhach,
+      id: MaAnhKhach
+    }).then(finish => console.log(finish))
+      .catch(err => console.log(err));
+  } catch (error) {
+    console.log(error);
+    return;
   }
 }
 
@@ -84,12 +118,13 @@ const postImage = async (img) => {
   }
 }
 
-const postDiaChi = async (MaViTri, MaPhuong, MaQuan) => {
+const postDiaChi = async (MaViTri, MaPhuong, MaQuan, TenDuong) => {
   try {
     const diachi = await db.diachi.create({
       MaViTri: MaViTri,
       MaPhuong: MaPhuong,
-      MaQuan: MaQuan
+      MaQuan: MaQuan,
+      TenDuong: TenDuong
     }).then(diachi => console.log(diachi))
       .catch(err => console.log(err));
     return;
@@ -99,18 +134,6 @@ const postDiaChi = async (MaViTri, MaPhuong, MaQuan) => {
   }
 }
 
-const postConnectAnh = async (MaAnh, MaKhach) => {
-  try {
-    const diachi = await db.quanlyanh.create({
-      MaAnh: MaAnh,
-      MaKhach: MaKhach
-    }).then(finish => console.log(finish))
-      .catch(err => console.log(err));
-  } catch (error) {
-    console.log(error);
-    return;
-  }
-}
 
 module.exports = {
   postKhach: postKhach,

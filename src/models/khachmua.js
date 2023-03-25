@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       khachmua.belongsTo(models.diachi, { foreignKey: 'MaViTri' });
-      khachmua.hasMany(models.quanlyanh, { foreignKey: 'MaKhachMua' })
+      khachmua.belongsTo(models.quanlyanh, {foreignKey: 'MaAnhKhach'});
     }
   }
   khachmua.init({
@@ -25,11 +25,12 @@ module.exports = (sequelize, DataTypes) => {
     TenKhach: DataTypes.STRING,
     NhuCauChiTiet: DataTypes.STRING,
     Sdt: DataTypes.STRING,
-      NgayDang: {
-        type: DataTypes.DATE,
-        defaultValue: sequelize.NOW
-      },
-    Linkface: DataTypes.STRING
+    NgayDang: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.NOW
+    },
+    Linkface: DataTypes.STRING,
+    MaAnhKhach: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'khachmua',
