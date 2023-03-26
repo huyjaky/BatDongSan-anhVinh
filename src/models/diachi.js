@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       diachi.hasOne(models.khachthue, {foreignKey: 'MaViTri'});
+      diachi.hasOne(models.khachmua, {foreignKey: 'MaViTri'});
+      diachi.hasOne(models.khachban, {foreignKey: 'MaViTri'});
+      diachi.hasOne(models.khachchothue, {foreignKey: 'MaViTri'});
+
       diachi.belongsTo(models.quan, {foreignKey: 'MaQuan'});
       diachi.belongsTo(models.phuong, {foreignKey: 'MaPhuong'});
     }

@@ -83,7 +83,19 @@ let getImgKhachThue = async (MaAnhKhach) => {
 let getKhachThue = async () => {
   try {
     const khachthue = await db.khachthue.findAll({
-      raw: true
+      include: [{
+        model: db.diachi,
+        required: true,
+        attributes: {exclude: ['MaViTri']},
+        include: [{
+          model: db.phuong,
+          attributes: ['TenPhuong'],
+        }, {
+          model: db.quan,
+          attributes: ['TenQuan']
+        }]
+      }],
+      attributes: {exclude: ['MaViTri']},
     });
     return khachthue;
   } catch (error) {
@@ -124,7 +136,21 @@ let getImgKhachMua = async (MaAnhKhach) => {
 
 let getKhachMua = async () => {
   try {
-    const khachmua = await db.khachmua.findAll();
+    const khachmua = await db.khachmua.findAll({
+      include: [{
+        model: db.diachi,
+        required: true,
+        attributes: {exclude: ['MaViTri']},
+        include: [{
+          model: db.phuong,
+          attributes: ['TenPhuong'],
+        }, {
+          model: db.quan,
+          attributes: ['TenQuan']
+        }]
+      }],
+      attributes: {exclude: ['MaViTri']},
+    });
     return khachmua;
   } catch (error) {
     console.log(error);
@@ -165,7 +191,21 @@ let getImgKhachChoThue = async (MaAnhKhach) => {
 let getKhachChoThue = async () => {
 
   try {
-    const khachchothue = await db.khachchothue.findAll();
+    const khachchothue = await db.khachchothue.findAll({
+      include: [{
+        model: db.diachi,
+        required: true,
+        attributes: {exclude: ['MaViTri']},
+        include: [{
+          model: db.phuong,
+          attributes: ['TenPhuong'],
+        }, {
+          model: db.quan,
+          attributes: ['TenQuan']
+        }]
+      }],
+      attributes: {exclude: ['MaViTri']},
+    });
     return khachchothue;
   } catch (error) {
     console.log(error);
@@ -204,7 +244,21 @@ let getImgKhachBan = async (MaAnhKhach) => {
 
 let getKhachBan = async () => {
   try {
-    const khachban = await db.khachban.findAll();
+    const khachban = await db.khachban.findAll({
+      include: [{
+        model: db.diachi,
+        required: true,
+        attributes: {exclude: ['MaViTri']},
+        include: [{
+          model: db.phuong,
+          attributes: ['TenPhuong'],
+        }, {
+          model: db.quan,
+          attributes: ['TenQuan']
+        }]
+      }],
+      attributes: {exclude: ['MaViTri' ]},
+    });
     return khachban;
   } catch (error) {
     console.log(error);

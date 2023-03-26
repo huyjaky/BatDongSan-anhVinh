@@ -29,7 +29,8 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: sequelize.NOW
       },
       Linkface: DataTypes.STRING,
-      MaAnhKhach: DataTypes.STRING
+      MaAnhKhach: DataTypes.STRING,
+      NhuCauChiTiet: DataTypes.STRING
     },
     {
       sequelize,
