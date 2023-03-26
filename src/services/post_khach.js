@@ -13,10 +13,10 @@ const postKhach = async (MaKhach, MaViTri, MaAnhKhach, TenDuong, TenKhach, TaiCh
     // them loai khach
     if (loaikhach === 'Khach Ban') {
       const postKhachBan = await db.khachban.create({
-        MaKhachBan: MaKhach,
+        MaKhach: MaKhach,
         MaViTri: MaViTri,
         TenKhach: TenKhach,
-        Gia: TaiChinh,
+        TaiChinh: TaiChinh,
         Sdt: Sdt,
         Linkface: Linkface,
         NgayDang: new Date(),
@@ -27,47 +27,46 @@ const postKhach = async (MaKhach, MaViTri, MaAnhKhach, TenDuong, TenKhach, TaiCh
 
     } else if (loaikhach === 'Khach Cho Thue') {
       const postKhachChoThue = await db.khachchothue.create({
-        MaKhachChoThue: MaKhach,
+        MaKhach: MaKhach,
         MaViTri: MaViTri,
-        TenKhachChoThue: TenKhach,
-        Gia: TaiChinh,
-        ThongTinChiTiet: NhuCauChiTiet,
+        TenKhach: TenKhach,
+        TaiChinh: TaiChinh,
         Sdt: Sdt,
+        Linkface: Linkface,
         NgayDang: new Date(),
         MaAnhKhach: MaAnhKhach,
-        Linkface: Linkface
+        NhuCauChiTiet: NhuCauChiTiet
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
 
     } else if (loaikhach === 'Khach Thue') {
       const postKhachThue = await db.khachthue.create({
-        MaKhachThue: MaKhach,
+        MaKhach: MaKhach,
         MaViTri: MaViTri,
-        TenKhachThue: TenKhach,
+        TenKhach: TenKhach,
         TaiChinh: TaiChinh,
-        NhuCauChiTiet: NhuCauChiTiet,
-        NgayDang: new Date(),
         Sdt: Sdt,
+        Linkface: Linkface,
+        NgayDang: new Date(),
         MaAnhKhach: MaAnhKhach,
-        Linkface: Linkface
+        NhuCauChiTiet: NhuCauChiTiet
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
 
     } else if (loaikhach === 'Khach Mua') {
       const postKhachMua = await db.khachmua.create({
-        MaKhachMua: MaKhach,
+        MaKhach: MaKhach,
         MaViTri: MaViTri,
         TenKhach: TenKhach,
         TaiChinh: TaiChinh,
-        NhuCauChiTiet: NhuCauChiTiet,
         Sdt: Sdt,
+        Linkface: Linkface,
         NgayDang: new Date(),
         MaAnhKhach: MaAnhKhach,
-        Linkface: Linkface
+        NhuCauChiTiet: NhuCauChiTiet
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
     }
-    
     return;
   } catch (error) {
     console.log(error);

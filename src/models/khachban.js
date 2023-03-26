@@ -11,18 +11,18 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       khachban.belongsTo(models.diachi, { foreignKey: 'MaViTri' });
-      khachban.belongsTo(models.quanlyanh, {foreignKey: 'MaAnhKhach'});
+      khachban.belongsTo(models.quanlyanh, { foreignKey: 'MaAnhKhach' });
     }
   }
   khachban.init(
     {
-      MaKhachBan: {
+      MaKhach: {
         type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true,
       },
       TenKhach: DataTypes.STRING,
-      Gia: DataTypes.DOUBLE,
+      TaiChinh: DataTypes.DOUBLE,
       Sdt: DataTypes.STRING,
       NgayDang: {
         type: DataTypes.DATE,
