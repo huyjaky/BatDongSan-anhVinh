@@ -42,7 +42,9 @@ let postKhach = async (req, res) => {
     const MaKhach = createUUID();
     const MaAnhKhach = createUUID();
 
-
+    const TheLoai = req.body.TheLoai;
+    const SoPhongNgu = req.body.SoPhongNgu;
+    const SoPhongVeSinh = req.body.SoPhongVeSinh;
     const MaPhuong = req.body.MaPhuong;
     const MaQuan = req.body.MaQuan;
     const TenDuong = req.body.TenDuong;
@@ -75,7 +77,10 @@ let postKhach = async (req, res) => {
       fileNames,
       MaPhuong,
       MaQuan,
-      loaikhach
+      loaikhach,
+      SoPhongNgu,
+      SoPhongVeSinh,
+      TheLoai
     );
     return res.json('finish');
   } catch (error) {

@@ -1,6 +1,22 @@
 const db = require("../models");
 
-const postKhach = async (MaKhach, MaViTri, MaAnhKhach, TenDuong, TenKhach, TaiChinh, NhuCauChiTiet, Sdt, Linkface, DanhSachHinh, MaPhuong, MaQuan, loaikhach) => {
+const postKhach = async (MaKhach,
+  MaViTri,
+  MaAnhKhach,
+  TenDuong,
+  TenKhach,
+  TaiChinh,
+  NhuCauChiTiet,
+  Sdt,
+  Linkface,
+  DanhSachHinh,
+  MaPhuong,
+  MaQuan,
+  loaikhach,
+  SoPhongNgu,
+  SoPhongVeSinh,
+  TheLoai
+) => {
   try {
     await postDiaChi(MaViTri, MaPhuong, MaQuan, TenDuong);
     await postQuanLyAnh(MaAnhKhach);
@@ -21,7 +37,10 @@ const postKhach = async (MaKhach, MaViTri, MaAnhKhach, TenDuong, TenKhach, TaiCh
         Linkface: Linkface,
         NgayDang: new Date(),
         MaAnhKhach: MaAnhKhach,
-        NhuCauChiTiet: NhuCauChiTiet
+        NhuCauChiTiet: NhuCauChiTiet,
+        SoPhongNgu: SoPhongNgu,
+        SoPhongVeSinh: SoPhongVeSinh,
+        TheLoai: TheLoai
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
 
@@ -35,7 +54,10 @@ const postKhach = async (MaKhach, MaViTri, MaAnhKhach, TenDuong, TenKhach, TaiCh
         Linkface: Linkface,
         NgayDang: new Date(),
         MaAnhKhach: MaAnhKhach,
-        NhuCauChiTiet: NhuCauChiTiet
+        NhuCauChiTiet: NhuCauChiTiet,
+        SoPhongNgu: SoPhongNgu,
+        SoPhongVeSinh: SoPhongVeSinh,
+        TheLoai: TheLoai
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
 
@@ -49,7 +71,10 @@ const postKhach = async (MaKhach, MaViTri, MaAnhKhach, TenDuong, TenKhach, TaiCh
         Linkface: Linkface,
         NgayDang: new Date(),
         MaAnhKhach: MaAnhKhach,
-        NhuCauChiTiet: NhuCauChiTiet
+        NhuCauChiTiet: NhuCauChiTiet,
+        SoPhongNgu: SoPhongNgu,
+        SoPhongVeSinh: SoPhongVeSinh,
+        TheLoai: TheLoai
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
 
@@ -63,7 +88,10 @@ const postKhach = async (MaKhach, MaViTri, MaAnhKhach, TenDuong, TenKhach, TaiCh
         Linkface: Linkface,
         NgayDang: new Date(),
         MaAnhKhach: MaAnhKhach,
-        NhuCauChiTiet: NhuCauChiTiet
+        NhuCauChiTiet: NhuCauChiTiet,
+        SoPhongNgu: SoPhongNgu,
+        SoPhongVeSinh: SoPhongVeSinh,
+        TheLoai: TheLoai
       }).then(khach => console.log(khach))
         .catch(err => console.log('loi!', err));
     }

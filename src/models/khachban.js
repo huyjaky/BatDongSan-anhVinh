@@ -30,8 +30,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       Linkface: DataTypes.STRING,
       MaAnhKhach: DataTypes.STRING,
-      NhuCauChiTiet: DataTypes.STRING
+      NhuCauChiTiet: DataTypes.STRING,
+      SoPhongNgu: DataTypes.STRING,
+      SoPhongVeSinh: DataTypes.STRING,
+      TheLoai: DataTypes.STRING
     },
+
     {
       sequelize,
       modelName: "khachban",
