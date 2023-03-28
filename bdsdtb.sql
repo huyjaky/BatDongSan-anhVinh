@@ -34,9 +34,8 @@ CREATE TABLE IF NOT EXISTS `diachi` (
 
 -- Dumping data for table bdsdatabase.diachi: ~2 rows (approximately)
 INSERT INTO `diachi` (`MaViTri`, `MaQuan`, `MaPhuong`, `TenDuong`) VALUES
-	('02bb2fef-b344-4866-80e2-6e633eb2cc0b', 'Q3', 'P11', '123'),
-	('545bae9c-e30d-4131-ba73-526bd92112fd', 'Q4', 'P12', '123'),
-	('59cb1c1d-8b2b-4f03-8cce-94c475e53238', 'Q2', 'P11', '12312');
+	('2e86e43a-631c-4ef7-8813-c5f9db05a45a', 'Q2', 'P11', '123'),
+	('d4add3d9-3665-4bb1-997e-cb51d3fe7027', 'Q3', 'P11', '123');
 
 -- Dumping structure for table bdsdatabase.folderanh
 CREATE TABLE IF NOT EXISTS `folderanh` (
@@ -49,15 +48,7 @@ CREATE TABLE IF NOT EXISTS `folderanh` (
   CONSTRAINT `FK_folderanh_quanlyanh` FOREIGN KEY (`MaAnhKhach`) REFERENCES `quanlyanh` (`MaAnhKhach`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table bdsdatabase.folderanh: ~7 rows (approximately)
-INSERT INTO `folderanh` (`MaAnh`, `MaAnhKhach`, `id`) VALUES
-	('1679834796108-4449bf61-b2ae-4ab7-a387-b20e61dc9060', 'a570f7ac-3f82-42c2-8054-c95079d8c319', 'a570f7ac-3f82-42c2-8054-c95079d8c319'),
-	('1679839849511-b18bb01f-eaba-4759-a53c-97c71dd37d1c', 'deb42c07-0c8e-400f-92ce-9520ff441350', 'deb42c07-0c8e-400f-92ce-9520ff441350'),
-	('1679839849512-f2fef407-07c3-4aec-ad87-b024615c8772', 'deb42c07-0c8e-400f-92ce-9520ff441350', 'deb42c07-0c8e-400f-92ce-9520ff441350'),
-	('1679839849514-7364c1d0-1544-41db-9980-101ce0ca14ff', 'deb42c07-0c8e-400f-92ce-9520ff441350', 'deb42c07-0c8e-400f-92ce-9520ff441350'),
-	('1679839849517-10371fc2-4d6e-415d-9d5e-6e13e3657835', 'deb42c07-0c8e-400f-92ce-9520ff441350', 'deb42c07-0c8e-400f-92ce-9520ff441350'),
-	('1679839849518-ebf945e1-62fa-4355-8e86-3299a407f1ae', 'deb42c07-0c8e-400f-92ce-9520ff441350', 'deb42c07-0c8e-400f-92ce-9520ff441350'),
-	('1679839849515-02f2b886-481a-4222-984b-a0d8a43120a2', 'deb42c07-0c8e-400f-92ce-9520ff441350', 'deb42c07-0c8e-400f-92ce-9520ff441350');
+-- Dumping data for table bdsdatabase.folderanh: ~0 rows (approximately)
 
 -- Dumping structure for table bdsdatabase.hinhanh
 CREATE TABLE IF NOT EXISTS `hinhanh` (
@@ -66,15 +57,7 @@ CREATE TABLE IF NOT EXISTS `hinhanh` (
   PRIMARY KEY (`MaAnh`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table bdsdatabase.hinhanh: ~7 rows (approximately)
-INSERT INTO `hinhanh` (`MaAnh`, `Hinh`) VALUES
-	('1679834796108-4449bf61-b2ae-4ab7-a387-b20e61dc9060', 'src\\private\\img\\1679834796108-4449bf61-b2ae-4ab7-a387-b20e61dc9060-332107462_890521025529153_6381195166255860553_n.jpg'),
-	('1679839849511-b18bb01f-eaba-4759-a53c-97c71dd37d1c', 'src\\private\\img\\1679839849511-b18bb01f-eaba-4759-a53c-97c71dd37d1c-330539875_1263931847868178_1870998456899492592_n.jpg'),
-	('1679839849512-f2fef407-07c3-4aec-ad87-b024615c8772', 'src\\private\\img\\1679839849512-f2fef407-07c3-4aec-ad87-b024615c8772-331969395_458237079762086_6178410643103997480_n.jpg'),
-	('1679839849514-7364c1d0-1544-41db-9980-101ce0ca14ff', 'src\\private\\img\\1679839849514-7364c1d0-1544-41db-9980-101ce0ca14ff-331990251_1706269343159111_2794523086690249994_n.jpg'),
-	('1679839849515-02f2b886-481a-4222-984b-a0d8a43120a2', 'src\\private\\img\\1679839849515-02f2b886-481a-4222-984b-a0d8a43120a2-332009658_1431758487632114_1333836561753660075_n.jpg'),
-	('1679839849517-10371fc2-4d6e-415d-9d5e-6e13e3657835', 'src\\private\\img\\1679839849517-10371fc2-4d6e-415d-9d5e-6e13e3657835-332097836_1333232437249304_4417999153014363092_n.jpg'),
-	('1679839849518-ebf945e1-62fa-4355-8e86-3299a407f1ae', 'src\\private\\img\\1679839849518-ebf945e1-62fa-4355-8e86-3299a407f1ae-332107462_890521025529153_6381195166255860553_n.jpg');
+-- Dumping data for table bdsdatabase.hinhanh: ~0 rows (approximately)
 
 -- Dumping structure for table bdsdatabase.khachban
 CREATE TABLE IF NOT EXISTS `khachban` (
@@ -87,6 +70,9 @@ CREATE TABLE IF NOT EXISTS `khachban` (
   `Linkface` varchar(255) DEFAULT NULL,
   `MaAnhKhach` varchar(50) DEFAULT NULL,
   `NhuCauChiTiet` varchar(200) DEFAULT NULL,
+  `SoPhongNgu` varchar(50) DEFAULT NULL,
+  `SoPhongVeSinh` varchar(50) DEFAULT NULL,
+  `TheLoai` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`MaKhach`) USING BTREE,
   KEY `FK1KhachBan.MaViTri` (`MaViTri`),
   KEY `FK_khachban_quanlyanh` (`MaAnhKhach`),
@@ -107,6 +93,9 @@ CREATE TABLE IF NOT EXISTS `khachchothue` (
   `NgayDang` datetime DEFAULT NULL,
   `Linkface` varchar(255) DEFAULT NULL,
   `MaAnhKhach` varchar(50) DEFAULT NULL,
+  `SoPhongNgu` varchar(50) DEFAULT NULL,
+  `SoPhongVeSinh` varchar(50) DEFAULT NULL,
+  `TheLoai` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`MaKhach`) USING BTREE,
   KEY `FK1KhachChoThue.MaViTri` (`MaViTri`),
   KEY `FK_khachchothue_quanlyanh` (`MaAnhKhach`),
@@ -115,8 +104,6 @@ CREATE TABLE IF NOT EXISTS `khachchothue` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table bdsdatabase.khachchothue: ~0 rows (approximately)
-INSERT INTO `khachchothue` (`MaKhach`, `MaViTri`, `TenKhach`, `TaiChinh`, `NhuCauChiTiet`, `Sdt`, `NgayDang`, `Linkface`, `MaAnhKhach`) VALUES
-	('66b03d9e-e9d4-426a-aecc-9a44980aafe8', '59cb1c1d-8b2b-4f03-8cce-94c475e53238', '123', '012312', '3123123', '123', '2023-03-26 14:10:55', '3', 'deb42c07-0c8e-400f-92ce-9520ff441350');
 
 -- Dumping structure for table bdsdatabase.khachmua
 CREATE TABLE IF NOT EXISTS `khachmua` (
@@ -129,6 +116,9 @@ CREATE TABLE IF NOT EXISTS `khachmua` (
   `NgayDang` datetime DEFAULT NULL,
   `Linkface` varchar(255) DEFAULT NULL,
   `MaAnhKhach` varchar(50) DEFAULT NULL,
+  `SoPhongNgu` varchar(50) DEFAULT NULL,
+  `SoPhongVeSinh` varchar(50) DEFAULT NULL,
+  `TheLoai` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`MaKhach`) USING BTREE,
   KEY `FK1KhachMua.MaViTri` (`MaViTri`),
   KEY `FK_khachmua_quanlyanh` (`MaAnhKhach`),
@@ -136,10 +126,9 @@ CREATE TABLE IF NOT EXISTS `khachmua` (
   CONSTRAINT `FK_khachmua_quanlyanh` FOREIGN KEY (`MaAnhKhach`) REFERENCES `quanlyanh` (`MaAnhKhach`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table bdsdatabase.khachmua: ~2 rows (approximately)
-INSERT INTO `khachmua` (`MaKhach`, `MaViTri`, `TaiChinh`, `TenKhach`, `NhuCauChiTiet`, `Sdt`, `NgayDang`, `Linkface`, `MaAnhKhach`) VALUES
-	('3a1fc37c-35de-4ed2-a27c-788b719737ed', '545bae9c-e30d-4131-ba73-526bd92112fd', '0123', '123', '123123', '123', '2023-03-26 12:58:16', '123', '8b6f53dc-0870-46b2-a4b4-9f87e15c1e9c'),
-	('b8a1291a-847a-4b15-bbf7-5322b0c4f24f', '02bb2fef-b344-4866-80e2-6e633eb2cc0b', '0123', '123', '123', '123', '2023-03-26 12:46:39', '123', 'a570f7ac-3f82-42c2-8054-c95079d8c319');
+-- Dumping data for table bdsdatabase.khachmua: ~1 rows (approximately)
+INSERT INTO `khachmua` (`MaKhach`, `MaViTri`, `TaiChinh`, `TenKhach`, `NhuCauChiTiet`, `Sdt`, `NgayDang`, `Linkface`, `MaAnhKhach`, `SoPhongNgu`, `SoPhongVeSinh`, `TheLoai`) VALUES
+	('f08e7f40-b343-4404-ad56-4aa576b6d968', 'd4add3d9-3665-4bb1-997e-cb51d3fe7027', '0123', '123', '123123', '123', '2023-03-27 15:53:30', '123', '0758fa74-1396-4fa6-b44f-6fb13a75bbf5', '11', '11', 'Nguyen Can');
 
 -- Dumping structure for table bdsdatabase.khachthue
 CREATE TABLE IF NOT EXISTS `khachthue` (
@@ -152,6 +141,9 @@ CREATE TABLE IF NOT EXISTS `khachthue` (
   `NgayDang` datetime DEFAULT NULL,
   `Linkface` varchar(255) DEFAULT NULL,
   `MaAnhKhach` varchar(50) DEFAULT NULL,
+  `SoPhongNgu` varchar(50) DEFAULT NULL,
+  `SoPhongVeSinh` varchar(50) DEFAULT NULL,
+  `TheLoai` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`MaKhach`) USING BTREE,
   KEY `FK1KhachThue.MaViTri` (`MaViTri`),
   KEY `FK_khachthue_quanlyanh` (`MaAnhKhach`),
@@ -159,7 +151,9 @@ CREATE TABLE IF NOT EXISTS `khachthue` (
   CONSTRAINT `FK_khachthue_quanlyanh` FOREIGN KEY (`MaAnhKhach`) REFERENCES `quanlyanh` (`MaAnhKhach`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table bdsdatabase.khachthue: ~0 rows (approximately)
+-- Dumping data for table bdsdatabase.khachthue: ~1 rows (approximately)
+INSERT INTO `khachthue` (`MaKhach`, `MaViTri`, `TenKhach`, `TaiChinh`, `NhuCauChiTiet`, `Sdt`, `NgayDang`, `Linkface`, `MaAnhKhach`, `SoPhongNgu`, `SoPhongVeSinh`, `TheLoai`) VALUES
+	('10bc5631-9fcf-4ccd-93ba-45be38fb3729', '2e86e43a-631c-4ef7-8813-c5f9db05a45a', '123', '0123', '123123123123123', '123', '2023-03-27 14:55:13', '123', '9f008465-bd2d-4d78-abcf-55360099deb4', '1', '2', 'Can Ho');
 
 -- Dumping structure for table bdsdatabase.nhanvien
 CREATE TABLE IF NOT EXISTS `nhanvien` (
@@ -262,16 +256,10 @@ CREATE TABLE IF NOT EXISTS `quanlyanh` (
   PRIMARY KEY (`MaAnhKhach`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table bdsdatabase.quanlyanh: ~8 rows (approximately)
+-- Dumping data for table bdsdatabase.quanlyanh: ~2 rows (approximately)
 INSERT INTO `quanlyanh` (`MaAnhKhach`) VALUES
-	('59ae7dcf-0b49-42a5-ab39-f11c33b7bcdd'),
-	('775d4cdd-1706-4987-970b-c3eb1b9442be'),
-	('83cddbaf-f701-4fd0-b19e-5787e03899ad'),
-	('8b6f53dc-0870-46b2-a4b4-9f87e15c1e9c'),
-	('9b723d09-5d80-4d03-8290-c65bca23e9fc'),
-	('a1b28737-1895-454d-a2f6-bfe3f2ff9419'),
-	('a570f7ac-3f82-42c2-8054-c95079d8c319'),
-	('deb42c07-0c8e-400f-92ce-9520ff441350');
+	('0758fa74-1396-4fa6-b44f-6fb13a75bbf5'),
+	('9f008465-bd2d-4d78-abcf-55360099deb4');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
