@@ -86,7 +86,6 @@ let getKhachThue = async () => {
       include: [{
         model: db.diachi,
         required: true,
-        attributes: {exclude: ['MaViTri']},
         include: [{
           model: db.phuong,
           attributes: ['TenPhuong'],
@@ -95,7 +94,6 @@ let getKhachThue = async () => {
           attributes: ['TenQuan']
         }]
       }],
-      attributes: {exclude: ['MaViTri']},
     });
     return khachthue;
   } catch (error) {
@@ -140,7 +138,6 @@ let getKhachMua = async () => {
       include: [{
         model: db.diachi,
         required: true,
-        attributes: {exclude: ['MaViTri']},
         include: [{
           model: db.phuong,
           attributes: ['TenPhuong'],
@@ -149,7 +146,6 @@ let getKhachMua = async () => {
           attributes: ['TenQuan']
         }]
       }],
-      attributes: {exclude: ['MaViTri']},
     });
     return khachmua;
   } catch (error) {
@@ -195,7 +191,6 @@ let getKhachChoThue = async () => {
       include: [{
         model: db.diachi,
         required: true,
-        attributes: {exclude: ['MaViTri']},
         include: [{
           model: db.phuong,
           attributes: ['TenPhuong'],
@@ -204,7 +199,6 @@ let getKhachChoThue = async () => {
           attributes: ['TenQuan']
         }]
       }],
-      attributes: {exclude: ['MaViTri']},
     });
     return khachchothue;
   } catch (error) {
@@ -248,7 +242,6 @@ let getKhachBan = async () => {
       include: [{
         model: db.diachi,
         required: true,
-        attributes: {exclude: ['MaViTri']},
         include: [{
           model: db.phuong,
           attributes: ['TenPhuong'],
@@ -257,7 +250,6 @@ let getKhachBan = async () => {
           attributes: ['TenQuan']
         }]
       }],
-      attributes: {exclude: ['MaViTri' ]},
     });
     return khachban;
   } catch (error) {
