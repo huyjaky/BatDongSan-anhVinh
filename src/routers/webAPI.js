@@ -7,6 +7,7 @@ const handlePostKhach = require('../controllers/handlePostKhach');
 const handleGetKhach = require('../controllers/handleGetKhach');
 const getImg = require('../controllers/getImg');
 const handleRemoveKhach = require('../controllers/handleRemoveKhach');
+const handleChangeVal = require('../controllers/handleChangeVal');
 
 
 const upload = multer({
@@ -30,6 +31,8 @@ let initRouter = (app) => {
   router.get('/api/img/path/*', getImg.getImage);
 
   router.post('/api/remove/khach', handleRemoveKhach.RemoveKhach);
+  router.post('/api/change/khach', handleChangeVal.handleChangeVal);
+  router.post('/api/change/img', upload.array('files'), handleChangeVal.upImg);
 
   return app.use('/', router);
 }
