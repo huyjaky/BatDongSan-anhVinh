@@ -10,29 +10,19 @@ const RemoveKhach = async (req, res) => {
     const loaikhach = req.body.loaikhach;
 
 
-    RemoveHinhTemp();
-    const MaKhach = khach.MaKhach;
-    const MaAnhKhach = khach.MaAnhKhach;
-    const MaViTri = khach.MaViTri;
+    const MaKhach = khach.khach.MaKhach;
+    const MaAnhKhach = khach.khach.MaAnhKhach;
+    const MaViTri = khach.khach.MaViTri;
 
     const removekhach = await remove_khach.RemoveKhach(MaKhach, MaAnhKhach, loaikhach, MaViTri);
-    return res.send('finish');
+    remove_khach.RemoveHinhTemp();
+    return res.json('finish');
   } catch (error) {
-    return res.send('error');
+    return res.json('error');
   }
 }
 
-const RemoveHinhTemp = async (req, res) => {
-  try {
-    const remove = remove_khach.RemoveHinhTemp();
-    return res.send('finish');
-  } catch (error) {
-    console.log(error);
-    return res.send('error');
-  }
-}
 
 module.exports = {
-  RemoveHinhTemp: RemoveHinhTemp,
   RemoveKhach: RemoveKhach
 }

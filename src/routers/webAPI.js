@@ -28,7 +28,7 @@ let initRouter = (app) => {
   router.post('/api/img', upload.array('files'), handlePostKhach.upImg);
   router.get('/api/getallkhach', handleGetKhach.getAllKhach);
   router.get('/api/img/path/*', getImg.getImage);
-  router.post('/api/img/remove', handleRemoveKhach.RemoveHinhTemp);
+
   router.post('/api/remove/khach', handleRemoveKhach.RemoveKhach);
 
   return app.use('/', router);
