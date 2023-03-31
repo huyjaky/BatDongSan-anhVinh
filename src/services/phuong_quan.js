@@ -21,7 +21,7 @@ const getPhuong = async () => {
 const getPhuongQuan = async () => {
   try {
     const result = await db.phuongquan.findAll({
-      attributes: { exclude: ['id', 'MaPhuong'] },
+      attributes: { exclude: ['id', 'MaPhuong', 'MaQuan'] },
       include: [{
         model: db.quan
       },
@@ -29,7 +29,6 @@ const getPhuongQuan = async () => {
         model: db.phuong
       }
       ],
-      raw: true,
     })
     return result;
   } catch (error) {
