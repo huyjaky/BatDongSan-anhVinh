@@ -1,6 +1,7 @@
 const { Sequelize, sequelize } = require("../models");
 const db = require("../models");
-
+const fs = require('fs');
+const path = require('path');
 
 const RemoveKhach = async (MaKhach, MaAnhKhach, loaikhach, MaViTri) => {
   try {
@@ -68,7 +69,20 @@ const RemoveFolderAnh = async (MaAnhKhach) => {
 
 const RemoveHinhTemp = async () => {
   try {
-    const removeHinh = await db.hinhanh.destroy({
+    const removeHinh = await db.hinhanh.findAll({
+      where: {
+        MaAnh: {
+          [Sequelize.Op.notIn]: sequelize.literal('(SELECT MaAnh FROM folderanh)')
+        }
+      }
+    })
+
+    await removeHinh.map(async(item) => {
+      await removeHinhR(item.dataValues.Hinh);
+      return;
+    })
+
+    const removeHinhDTB = await db.hinhanh.destroy({
       where: {
         MaAnh: {
           [Sequelize.Op.notIn]: sequelize.literal('(SELECT MaAnh FROM folderanh)')
@@ -79,6 +93,17 @@ const RemoveHinhTemp = async () => {
     console.log(error);
     return;
   }
+}
+
+const removeHinhR = async (path1) => {
+  const imagePath = path1; // Đường dẫn ảnh cần xóa
+  fs.unlink(path.join(__dirname + '../../../', imagePath), (err) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log('Finish');
+  });
 }
 module.exports = {
   RemoveKhach: RemoveKhach,
