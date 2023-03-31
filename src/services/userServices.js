@@ -22,7 +22,7 @@ const checkNhanVien = async (TaiKhoan, MatKhau) => {
   try {
     const user = await db.nhanvien.findOne({
       where: { TaiKhoan: TaiKhoan, MatKhau: MatKhau },
-      attributes: ['MaNhanVien', 'TaiKhoan']
+      attributes: ['MaNhanVien', 'TaiKhoan', 'MaPQ']
     })
     if (user) {
       return { isExist: true, user: user };
