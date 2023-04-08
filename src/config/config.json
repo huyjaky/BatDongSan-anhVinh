@@ -1,23 +1,24 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "bdsdatabase",
-    "host": "127.0.0.1",
+    "username": "vvtba526_bdsdatabase",
+    "password": "thayvinh2011",
+    "database": "vvtba526_bdsdatabase",
+    "host": "112.213.89.28",
     "dialect": "mariadb"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "bdsdatabase",
-    "host": "127.0.0.1",
+    "username": "vvtba526_bdsdatabase",
+    "password": "thayvinh2011",
+    "database": "vvtba526_bdsdatabase",
+    "host": "112.213.89.28",
     "dialect": "mariadb"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "bdsdatabase",
-    "host": "127.0.0.1",
+    "username": "vvtba526_bdsdatabase",
+    "password": "thayvinh2011",
+    "database": "vvtba526_bdsdatabase",
+    "host": "112.213.89.28",
     "dialect": "mariadb"
   }
 }
+
