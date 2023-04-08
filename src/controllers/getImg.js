@@ -7,6 +7,7 @@ let getImage = async (req, res) => {
     return res.sendFile(imagePath);
   } catch (error) {
     console.log(error);
+    console.log('sua loi');
     return res.json(error);
   }
 }
