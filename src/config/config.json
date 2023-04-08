@@ -4,23 +4,21 @@
     "password": "thayvinh2011",
     "database": "vvtba526_bdsdatabase",
     "host": "112.213.89.28",
-    "dialect": "mysql",
-    "port": "3306"
+    "dialect": "mariadb"
   },
   "test": {
     "username": "vvtba526_bdsdatabase",
     "password": "thayvinh2011",
     "database": "vvtba526_bdsdatabase",
     "host": "112.213.89.28",
-    "dialect": "mysql",
-    "port": "3306"
+    "dialect": "mariadb"
   },
   "production": {
     "username": "vvtba526_bdsdatabase",
     "password": "thayvinh2011",
     "database": "vvtba526_bdsdatabase",
     "host": "112.213.89.28",
-    "dialect": "mysql",
-    "port": "3306"
+    "dialect": "mariadb"
   }
 }
+
