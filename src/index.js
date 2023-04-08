@@ -18,14 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 viewEngine(app);
 router(app);
 
-const option = {
-  key: fs.readFileSync('I://newjava//JavaScript//BatDongSan//back-end//src//server_key.key'),
-  cert: fs.readFileSync('I://newjava//JavaScript//BatDongSan//back-end//src//server.crt')
-}
-
-const server = https.createServer(option, app);
-
 let port = process.env.PORT || 8080;
-server.listen(port, () => {
+app.listen(port, () => {
   console.log('Server listening on port ', port);
 });
